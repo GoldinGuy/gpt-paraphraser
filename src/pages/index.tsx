@@ -68,7 +68,7 @@ export default function Home() {
 
 	return (
 		<main
-			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} w-full overflow-auto`}
+			className={`flex flex-col items-center justify-between pt-24 w-full  h-full`}
 		>
 			<img
 				alt="bg"
@@ -84,11 +84,11 @@ export default function Home() {
 				</p>
 			</div>
 
-			<div className="fixed flex items-start h-full pt-1 mb-20 overflow-scroll lg:pt-16">
+			<div className="relative flex items-start h-full pt-1 mb-6 overflow-hidden lg:fixed lg:pt-16">
 				<PerturbForm onParaphrase={paraphraseText} />
 			</div>
 
-			<div className="absolute px-5 bottom-4 md:bottom-10">
+			<div className="relative px-5 py-8 bottom-6 sm:absolute">
 				<a
 					href="https://github.com/GoldinGuy/gpt-paraphraser"
 					target="_blank"

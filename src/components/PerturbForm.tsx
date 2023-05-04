@@ -66,9 +66,9 @@ const PerturbForm = ({
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="flex flex-col items-start w-full h-full m-auto mx-6 md:mx-10 lg:flex-row"
+			className="flex flex-col items-start w-full h-full m-auto mx-3 md:mx-10 lg:flex-row"
 		>
-			<div className="mb-3 mr-4">
+			<div className="mb-3 md:mr-4">
 				<label
 					htmlFor="input-text"
 					className="block text-sm font-medium text-gray-700"
