@@ -14,7 +14,7 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 	try {
 		const response = await openai.createCompletion({
 			model: "text-davinci-003",
-			prompt: `When it comes to writing articles, there are two crucial factors: "perplexity" and "burstiness". Perplexity measures the complexity of the text. Burstiness compares the variation of the sentences. Humans tend to write with greater burstiness with sentences that vary in length between short sentences, long ones. While AI write sentences that are more uniform. Therefore I am asking you to balance perplexity and burstiness while writing something that appears more likely to be written by a human than AI. Using the concepts discussed earlier, rewrite this essay in the style of a amateur high school student with a burstiness of 200% and a perplexity of 20%: ${text} \n\n\n\nParaphrased text:`,
+			prompt: `There are two crucial factors when writing essays: "perplexity" and "burstiness". Perplexity evaluates complexity of text, while Burstiness measures variation in sentence length. Humans write sentences with high burstiness that vary in length, while AI authors sentences that are more uniform. Balance perplexity and burstiness and write something that appears more likely to be written by a human than AI. Using the concepts discussed earlier, rewrite this essay in the style of a amateur high school student with a burstiness of 200% and a perplexity of 20%: ${text} \n\n\n\nParaphrased text:`,
 			max_tokens: 3000,
 			n: 1,
 			stop: null,
@@ -23,7 +23,7 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 		if (response.data.choices[0].text) {
 			const replacedString = response.data.choices[0].text
 				.trim()
-				.replace(/[phixoyjle]/g, (match) => {
+				.replace(/[phixoyje]/g, (match) => {
 					switch (match) {
 						case "p":
 							return "р";
@@ -39,8 +39,8 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 							return "ј";
 						case "y":
 							return "у";
-						case "l":
-							return "ӏ";
+						// case "l":
+						// 	return "ӏ";
 						case "e":
 							return "е";
 						default:
