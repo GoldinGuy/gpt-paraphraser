@@ -8,12 +8,30 @@ export default function Home() {
 	const paraphraseText = async (text: string): Promise<string> => {
 		console.log(text);
 		// Replace this with the actual paraphrasing API or algorithm
-		return text;
+		try {
+			const response = await fetch("/api/paraphrase", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ text }),
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				return data.paraphrasedText;
+			} else {
+				throw new Error("Paraphrasing API error");
+			}
+		} catch (error) {
+			console.error("Error:", error);
+			return "Failed to paraphrase the text";
+		}
 	};
 
 	return (
 		<main
-			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} w-full`}
+			className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className} w-full overflow-auto`}
 		>
 			<img
 				alt="bg"
@@ -29,7 +47,7 @@ export default function Home() {
 				</p>
 			</div>
 
-			<div className="fixed flex items-start pt-1 lg:pt-24">
+			<div className="fixed flex items-start h-full pt-1 mb-20 overflow-scroll lg:pt-16">
 				<PerturbForm onParaphrase={paraphraseText} />
 			</div>
 
