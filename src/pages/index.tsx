@@ -16,6 +16,7 @@ export default function Home() {
 
 		if (response.ok) {
 			const data = await response.json();
+			console.log("finished para");
 			return data.paraphrasedText;
 		} else {
 			throw new Error("Paraphrasing API error");
