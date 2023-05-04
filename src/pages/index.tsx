@@ -5,24 +5,37 @@ import PerturbForm from "@/components/PerturbForm";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+	const callPara = async (text: string): Promise<string> => {
+		const response = await fetch("/api/paraphrase", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ text }),
+		});
+
+		if (response.ok) {
+			const data = await response.json();
+			return data.paraphrasedText;
+		} else {
+			throw new Error("Paraphrasing API error");
+		}
+	};
+
 	const paraphraseText = async (text: string): Promise<string> => {
 		console.log(text);
-		// Replace this with the actual paraphrasing API or algorithm
 		try {
-			const response = await fetch("/api/paraphrase", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ text }),
-			});
-
-			if (response.ok) {
-				const data = await response.json();
-				return data.paraphrasedText;
-			} else {
-				throw new Error("Paraphrasing API error");
-			}
+			// Using character length
+			// const chunkSize = 1000;
+			// const chunks = [];
+			// for (let i = 0; i < text.length; i += chunkSize) {
+			// 	chunks.push(text.slice(i, i + chunkSize));
+			// }
+			// using paragraphs
+			const paragraphs = text.split("\n\n");
+			const apiPromises = paragraphs.map((chunk) => callPara(chunk));
+			const processedChunks = await Promise.all(apiPromises);
+			return processedChunks.join("\n\n");
 		} catch (error) {
 			console.error("Error:", error);
 			return "Failed to paraphrase the text";
