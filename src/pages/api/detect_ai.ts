@@ -14,7 +14,7 @@ async function getPredictions(
 		headers: {
 			"Content-Type": "application/json",
 			accept: "application/json",
-			"X-Api-Key": process.env.GPT_ZERO_API_KEY ?? "UNDEFINED",
+			"X-Api-Key": process.env.NEXT_PUBLIC_GPT_ZERO_API_KEY ?? "UNDEFINED",
 		},
 		body: JSON.stringify({ document }),
 	});
