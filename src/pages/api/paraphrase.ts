@@ -18,9 +18,9 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 			max_tokens: 3000,
 			n: 1,
 			stop: null,
-			frequency_penalty: 0.5,
-			presence_penalty: 0.5,
-			temperature: 1,
+			frequency_penalty: 0.4,
+			presence_penalty: 0.4,
+			temperature: 0.8,
 		});
 		if (response.data.choices[0].text) {
 			const replacedString = response.data.choices[0].text
