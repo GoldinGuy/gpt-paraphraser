@@ -18,12 +18,14 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 			max_tokens: 3000,
 			n: 1,
 			stop: null,
-			temperature: 0.7,
+			frequency_penalty: 1,
+			presence_penalty: 1,
+			temperature: 1.2,
 		});
 		if (response.data.choices[0].text) {
 			const replacedString = response.data.choices[0].text
 				.trim()
-				.replace(/[phixoyje]/g, (match) => {
+				.replace(/[phixoylje]/g, (match) => {
 					switch (match) {
 						case "p":
 							return "р";
@@ -41,6 +43,7 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 							return "у";
 						case "l":
 							return "ӏ";
+
 						case "e":
 							return "е";
 						default:
