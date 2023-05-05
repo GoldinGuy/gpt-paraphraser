@@ -39,8 +39,8 @@ async function paraphraseWithGpt3(text: string): Promise<string> {
 							return "ј";
 						case "y":
 							return "у";
-						// case "l":
-						// 	return "ӏ";
+						case "l":
+							return "ӏ";
 						case "e":
 							return "е";
 						default:
