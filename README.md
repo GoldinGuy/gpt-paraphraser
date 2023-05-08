@@ -18,7 +18,9 @@ Then create a new  `.env` file and add your `OPENAI` and `GPTZero` API keys.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Structure
+
+`/src` contains all of the code for the web app. `/api` contains the two primary API files – one for paraphrasing, and one for AI detection. `/matlab` contains all of the code for CNN and matlab analysis. 
 
 ## More Info
 
