@@ -1,4 +1,4 @@
-### LING 227 Final Project: GPT Paraphraser + Matlab CNN
+# LING 227 Final Project: GPT Paraphraser + Matlab CNN
 
 ## Getting Started
 
